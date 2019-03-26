@@ -14,9 +14,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class UserController {
 
     @GetMapping("/greeting")
-    public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-        model.addAttribute("name", name);
-        return "greeting.mustache";
+    public String greeting() {
+        return "greeting";
     }
 
     @Controller    // This means that this class is a Controller

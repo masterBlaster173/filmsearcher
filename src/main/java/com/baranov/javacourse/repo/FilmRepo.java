@@ -8,4 +8,7 @@ import java.util.List;
 public interface FilmRepo extends CrudRepository<UserController, Long> {
 
     List<UserController> findByTitle(String title);
+
+    List<UserController> findByYear(Integer year);
 }
+
