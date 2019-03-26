@@ -23,10 +23,10 @@ public class Film {
 
     }
 
-    public Film(String title, String genre, Integer year, String filmDescrip) {
+    public Film(String title, Integer year, String filmDescrip) {
         this.title = title;
-        this.genre = genre;
         this.year = year;
+        this.filmDescrip = filmDescrip;
     }
 
     public Integer getId() {
@@ -42,7 +42,10 @@ public class Film {
     }
 
     public Integer getYear() {
-        return year;
+        if (year==null) {
+            return 0;
+        }
+        else return year;
     }
 
     public String getFilmDescrip() {

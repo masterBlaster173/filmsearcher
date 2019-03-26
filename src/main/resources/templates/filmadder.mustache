@@ -1,0 +1,23 @@
+<html>
+
+<body>
+<div>
+    <form method="post">
+        <input type="text" name="title" placeholder="Название фильма"/>
+        <input type="text" name="year" placeholder="Год выхода"/>
+        <p><input type="text" name="filmDescrip" placeholder="Описание"/></p>
+        <button type="submit">Опубликовать</button>
+    </form>
+</div>
+
+<div> Список фильмов </div>
+{{#films}}
+        <b>{{id}}</b>
+        <span><b>{{title}}</b></span>
+        <span><b>, {{year}} год</b></span>
+        <p>{{filmDescrip}}</p>
+{{/films}}
+
+</body>
+</html>
+
