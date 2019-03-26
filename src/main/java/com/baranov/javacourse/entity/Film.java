@@ -15,7 +15,7 @@ public class Film {
 
     private String genre;
 
-    private Integer year;
+    private String year;
 
     private String filmDescrip;
 
@@ -23,7 +23,7 @@ public class Film {
 
     }
 
-    public Film(String title, Integer year, String filmDescrip) {
+    public Film(String title, String year, String filmDescrip) {
         this.title = title;
         this.year = year;
         this.filmDescrip = filmDescrip;
@@ -41,11 +41,8 @@ public class Film {
         return genre;
     }
 
-    public Integer getYear() {
-        if (year==null) {
-            return 0;
-        }
-        else return year;
+    public String getYear() {
+         return year;
     }
 
     public String getFilmDescrip() {
@@ -64,7 +61,7 @@ public class Film {
         this.genre = genre;
     }
 
-    public void setYear(Integer year) {
+    public void setYear(String year) {
         this.year = year;
     }
 

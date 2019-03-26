@@ -11,9 +11,9 @@ public class Actor {
 
     private String actorName;
 
-    private String genre;
+    private String gender;
 
-    private Integer age;
+    private String age;
 
     private String bio;
 
@@ -21,9 +21,9 @@ public class Actor {
 
     }
 
-    public Actor(String actorName, String genre, Integer age, String bio) {
+    public Actor(String actorName, String genre, String age, String bio) {
         this.actorName = actorName;
-        this.genre = genre;
+        this.gender = genre;
         this.age = age;
         this.bio = bio;
     }
@@ -37,10 +37,10 @@ public class Actor {
     }
 
     public String getGenre() {
-        return genre;
+        return gender;
     }
 
-    public Integer getAge() {
+    public String getAge() {
         return age;
     }
 
@@ -57,10 +57,10 @@ public class Actor {
     }
 
     public void setGenre(String genre) {
-        this.genre = genre;
+        this.gender = genre;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(String age) {
         this.age = age;
     }
 
