@@ -1,5 +1,4 @@
-<!-- Тимплейт редактора для просмотра и внесения фильма в список -->
-
+<!-- Тимплейт пользователя для просмотра и внесения фильма в список -->
 <html>
 
 <body>
@@ -9,9 +8,12 @@
         <input type="text" name="title" placeholder="Название фильма"/>
         <input type="text" name="year" placeholder="Год выхода"/>
         <p><input type="text" name="filmDescrip" placeholder="Описание"/></p>
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
         <button type="submit">Опубликовать</button>
     </form>
 </div>
+
+
 
 <div> Список фильмов </div>
 {{#films}}
@@ -21,6 +23,12 @@
         <p>Описание:</p>
         <p><i>{{filmDescrip}}</i></p>
 {{/films}}
+
+    <form action="/logout" method="post">
+        <input type="submit" value="Sign Out"/>
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+    </form>
+
 <p><a href="/" > На главную </a></p>
 </body>
 </html>
