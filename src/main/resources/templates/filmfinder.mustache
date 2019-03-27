@@ -5,7 +5,9 @@
 <body>
 <div><b> Поиск фильма </b></div>
 <form method="get">
-    <input type="text" name="filter" placeholder="Название фильма" />
+    <input type="text" name="filter" placeholder="Веедите значение" />
+    <label><input type="radio" name="button" value="1"> по названию</label>
+    <label><input type="radio" name="button" value="2"> по году</label>
     <button type="submit">Поиск</button>
 </form>
 
@@ -14,8 +16,9 @@
 {{#films}}
     <span><b>{{title}}</b></span>
     <span><b>, {{year}} год</b></span>
-    <p>{{filmDescrip}}</p>
+    <p>Описание:</p>
+    <p><i>{{filmDescrip}}</i></p>
 {{/films}}
-
+<p><a href="/" > На главную </a></p>
 </body>
 </html>

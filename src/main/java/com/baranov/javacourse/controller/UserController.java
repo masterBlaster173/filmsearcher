@@ -49,10 +49,17 @@ public class UserController {
         }
 
         @RequestMapping("/find-film")
-        public String filmFilter(@RequestParam(required = false) String filter,  Map<String, Object> model) {
+        public String filmFilter(@RequestParam(required = false) String filter , @RequestParam(value="button", defaultValue = "0") String button,  Map<String, Object> model) {
 
-                List<Film> films = filmRepo.findByTitle(filter);
-                model.put("films", films);
+                String b = button;
+                if (b.equals("1")) {
+                    List<Film> films = filmRepo.findByTitle(filter);
+                    model.put("films", films);
+                }
+                else if (b.equals("2")) {
+                    List<Film> films = filmRepo.findByYear(filter);
+                    model.put("films", films);
+                }
 
             return "filmfinder";
         }

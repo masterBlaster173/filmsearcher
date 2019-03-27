@@ -3,6 +3,7 @@
 <html>
 
 <body>
+<div><b> Опубликуйте обзор фильма: </b></div>
 <div>
     <form method="post">
         <input type="text" name="title" placeholder="Название фильма"/>
@@ -17,9 +18,10 @@
         <b>{{id}}</b>
         <span><b>{{title}}</b></span>
         <span><b>,  год: {{year}}</b></span>
-        <p>{{filmDescrip}}</p>
+        <p>Описание:</p>
+        <p><i>{{filmDescrip}}</i></p>
 {{/films}}
-
+<p><a href="/" > На главную </a></p>
 </body>
 </html>
 
