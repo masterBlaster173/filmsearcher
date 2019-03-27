@@ -1,3 +1,8 @@
+/*Spring boot test project
+ @author Baranov Alexander Alexandrovich
+ @version 1.0
+ */
+
 package com.baranov.javacourse;
 
 import org.springframework.boot.SpringApplication;
