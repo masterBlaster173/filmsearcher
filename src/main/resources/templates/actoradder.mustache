@@ -5,22 +5,24 @@
 <div><b> Опубликуйте обзор фильма: </b></div>
 <div>
     <form method="post">
-        <input type="text" name="title" placeholder="Название фильма"/>
-        <input type="text" name="year" placeholder="Год выхода"/>
-        <p><input type="text" name="filmDescrip" placeholder="Описание"/></p>
+        <input type="text" name="firstame" placeholder="Имя"/>
+        <input type="text" name="lastname" placeholder="Фамилия"/>
+        <input type="text" name="age" placeholder="Возраст"/>
+        <p><input type="text" name="bio" placeholder="Биография"/></p>
         <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+
         <button type="submit">Опубликовать</button>
     </form>
 </div>
 
-<div> Список фильмов </div>
-{{#films}}
+<div> Список актёров </div>
+{{#actors}}
         <b>{{id}}</b>
-        <span><b>{{title}}</b></span>
-        <span><b>,  год: {{year}}</b></span>
-        <p>Описание:</p>
-        <p><i>{{filmDescrip}}</i></p>
-{{/films}}
+        <span><b>{{firstame}} {{lastname}}</b></span>
+        <span><b>,  возраст: {{age}}</b></span>
+        <p>Биография:</p>
+        <p><i>{{bio}}</i></p>
+{{/actors}}
 
     <form action="/logout" method="post">
         <input type="submit" value="Sign Out"/>
