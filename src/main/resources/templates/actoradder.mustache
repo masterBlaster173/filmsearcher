@@ -2,6 +2,14 @@
 <html>
 
 <body>
+<style>
+    table {
+        border-collapse: collapse;
+    }
+    th, td {
+        border: 1px solid black;
+    }
+</style>
 <div><b> Опубликуйте обзор фильма: </b></div>
 <div>
     <form method="post">
@@ -15,15 +23,29 @@
     </form>
 </div>
 <hr>
-<div> Список актёров </div>
+<div><b> Список актёров:</b> </div>
 {{#actors}}
-        <b>{{id}}</b>
-        <span><b>{{firstame}} {{lastname}}</b></span>
-        <span><b>,  возраст: {{age}}</b></span>
-        <p>Биография:</p>
-        <p><i>{{bio}}</i></p>
-        <hr>
+<table class="table ">
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Имя</th>
+        <th scope="col">Возраст:</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row">{{id}}</th>
+        <td>{{firstame}} {{lastname}}</td>
+        <td>{{age}}<br></td>
+    </tr>
+    </tbody>
+</table>
+<p>Биография</p>
+<p><i>{{bio}}</i></p>
+<hr>
 {{/actors}}
+
 <form action="/logout" method="post">
         <input type="submit" value="Sign Out"/>
         <input type="hidden" name="_csrf" value="{{_csrf.token}}" />

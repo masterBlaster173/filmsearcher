@@ -2,6 +2,14 @@
 <html>
 
 <body>
+<style>
+    table {
+        border-collapse: collapse;
+    }
+    th, td {
+        border: 1px solid black;
+    }
+</style>
 <div><b> Опубликуйте обзор фильма: </b></div>
 <div>
     <form method="post">
@@ -9,7 +17,6 @@
         <input type="text" name="year" placeholder="Год выхода"/>
         <p><input type="text" name="filmDescrip" placeholder="Описание"/></p>
         <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
-        <hr>
         <div> Выберете актёров, сыгравших в главных ролях:
             <table>
                 {{#actors}}
@@ -25,15 +32,29 @@
     <p><a href="/add-film" > Обновить форму </a></p>
 </div>
 <hr>
-
-
-<div> Список фильмов </div>
+<div> <b>Список фильмов </b></div>
+<hr>
 {{#films}}
-        <b>{{id}}</b>
-        <span><b>{{title}}</b></span>
-        <span><b>,  год: {{year}}</b></span>
-        <p><b> В ролях: {{mainActor}}</b></p>
-        <p>Описание:</p>
+
+    <table class="table ">
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Название</th>
+        <th scope="col">В ролях:</th>
+        <th scope="col">Год</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row">{{id}}</th>
+        <td>{{title}}</td>
+        <td>{{mainActor}}<br></td>
+        <td>{{year}}</td>
+    </tr>
+    </tbody>
+    </table>
+         <p>Описание:</p>
         <p><i>{{filmDescrip}}</i></p>
         <hr>
 {{/films}}
@@ -42,9 +63,8 @@
         <input type="submit" value="Sign Out"/>
         <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
     </form>
-
-
 <p><a href="/" > На главную </a></p>
 </body>
+
 </html>
 

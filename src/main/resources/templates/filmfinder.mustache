@@ -2,6 +2,14 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <body>
+<style>
+    table {
+        border-collapse: collapse;
+    }
+    th, td {
+        border: 1px solid black;
+    }
+</style>
 <div><b> Поиск фильма </b></div>
 <form method="get">
     <input type="text" name="filter" placeholder="Веедите значение" />
@@ -15,10 +23,27 @@
 <div> Найденные фильмы </div>
 
 {{#films}}
-    <span><b>{{title}}</b></span>
-    <span><b>, {{year}} год</b></span>
-    <p>Описание:</p>
-    <p><i>{{filmDescrip}}</i></p>
+<table class="table ">
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Название</th>
+        <th scope="col">В ролях:</th>
+        <th scope="col">Год</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row">{{id}}</th>
+        <td>{{title}}</td>
+        <td>{{mainActor}}<br></td>
+        <td>{{year}}</td>
+    </tr>
+    </tbody>
+</table>
+<p>Описание:</p>
+<p><i>{{filmDescrip}}</i></p>
+<hr>
 {{/films}}
 <p><a href="/" > На главную </a></p>
 </body>
