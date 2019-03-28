@@ -3,6 +3,9 @@
 
 <body>
 <style>
+    body { background-color: lightblue; }
+</style>
+<style>
     table {
         border-collapse: collapse;
     }
@@ -16,7 +19,8 @@
         <input type="text" name="firstame" placeholder="Имя"/>
         <input type="text" name="lastname" placeholder="Фамилия"/>
         <input type="text" name="age" placeholder="Возраст"/>
-        <p><input type="text" name="bio" placeholder="Биография"/></p>
+        <!--<p><input type="text" name="bio" placeholder="Биография"/></p>-->
+        <p> <textarea placeholder="Биография" name="bio" rows="4" cols="55" ></textarea></p>
         <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
 
         <button type="submit">Опубликовать</button>

@@ -2,6 +2,10 @@
 <html>
 
 <body>
+<!--<meta http-equiv="refresh" content="1">-->
+<style>
+    body { background-color: lightblue; }
+</style>
 <style>
     table {
         border-collapse: collapse;
@@ -15,9 +19,11 @@
     <form method="post">
         <input type="text" name="title" placeholder="Название фильма"/>
         <input type="text" name="year" placeholder="Год выхода"/>
-        <p><input type="text" name="filmDescrip" placeholder="Описание"/></p>
-        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
-        <div> Выберете актёров, сыгравших в главных ролях:
+        <!--<p><input type="text" name="filmDescrip"  placeholder="Описание" /></p>-->
+        
+        <p> <textarea placeholder="Описание" name="filmDescrip" rows="4" cols="55" ></textarea></p>
+
+         Выберете актёров, сыгравших в главных ролях:
             <table>
                 {{#actors}}
                     <tr>
@@ -26,10 +32,11 @@
                     </tr>
                 {{/actors}}
             </table>
-        </div>
+
         <button type="submit">Опубликовать</button>
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
     </form>
-    <p><a href="/add-film" > Обновить форму </a></p>
+    <p><a href="/add-film" > Обновить список актёров </a></p>
 </div>
 <hr>
 <div> <b>Список фильмов </b></div>
