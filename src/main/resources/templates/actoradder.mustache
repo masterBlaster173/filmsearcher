@@ -14,7 +14,7 @@
         <button type="submit">Опубликовать</button>
     </form>
 </div>
-
+<hr>
 <div> Список актёров </div>
 {{#actors}}
         <b>{{id}}</b>
@@ -22,9 +22,9 @@
         <span><b>,  возраст: {{age}}</b></span>
         <p>Биография:</p>
         <p><i>{{bio}}</i></p>
+        <hr>
 {{/actors}}
-
-    <form action="/logout" method="post">
+<form action="/logout" method="post">
         <input type="submit" value="Sign Out"/>
         <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
     </form>
