@@ -9,15 +9,30 @@
         <input type="text" name="year" placeholder="Год выхода"/>
         <p><input type="text" name="filmDescrip" placeholder="Описание"/></p>
         <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+
+        <div> Выберете актёров, сыгравших в главных ролях:
+            <table>
+                {{#actors}}
+                    <tr>
+                        <td><input type="checkbox" value="{{firstame}} {{lastname}}" name="mainActor"></td>
+                        <td>{{firstame}} {{lastname}}</td>
+                    </tr>
+                {{/actors}}
+            </table>
+        </div>
+
         <button type="submit">Опубликовать</button>
     </form>
 </div>
+
+
 
 <div> Список фильмов </div>
 {{#films}}
         <b>{{id}}</b>
         <span><b>{{title}}</b></span>
         <span><b>,  год: {{year}}</b></span>
+        <p><b> В ролях: {{mainActor}}</b></p>
         <p>Описание:</p>
         <p><i>{{filmDescrip}}</i></p>
 {{/films}}
@@ -27,6 +42,7 @@
         <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
     </form>
 
+<p><a href="/add-film" > Обновить </a></p>
 <p><a href="/" > На главную </a></p>
 </body>
 </html>

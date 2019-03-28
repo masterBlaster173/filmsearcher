@@ -26,41 +26,52 @@ public class UserController {
 
         @GetMapping("/add-film") // страница редактора
 
-        public String findFilms(Map<String, Object> model) {     //
+        public String findFilms(Map<String, Object> model) {
             Iterable<Film> films = filmRepo.findAll();
             model.put("films", films);
+
+            Iterable<Actor> actors = actorRepo.findAll();  // для отображения списка актёров
+            model.put("actors", actors);
             return "filmadder";
         }
 
-        @PostMapping("/add-film")
+        @PostMapping("/add-film") // страница редактора
+
+
         //внесение значений в БД
-        public String addFilm(@RequestParam String title, @RequestParam String year, @RequestParam String filmDescrip, Map<String, Object> model){
+        public String addFilm(@RequestParam String title, @RequestParam String year, @RequestParam String filmDescrip, @RequestParam(defaultValue = "пусто") String mainActor, Map<String, Object> model){
 
             if (year.equals("")) {
                 year = "неизвестен"; // в случае незаполнения формы, выдаётся "год неизвестен"
             }
             else if (filmDescrip.equals("")) {
-                filmDescrip = "Описание отсутствует"; // в случае незаполнения формы, выдаётся "год неизвестен"
+                filmDescrip = "Описание отсутствует"; // в случае незаполнения формы, выдаётся "Описание отсутствует"
             }
 
-            Film film = new Film(title, year, filmDescrip);
+            Film film = new Film(title, year, filmDescrip, mainActor);
             filmRepo.save(film);
             //чтение из БД
             Iterable<Film> films = filmRepo.findAll();
             model.put("films", films);
+
         return "filmadder";
         }
 
         @RequestMapping("/find-film")
         public String filmFilter(@RequestParam(required = false) String filter , @RequestParam(value="button", defaultValue = "0") String button,  Map<String, Object> model) {
-
+            Iterable<Film> films;
                 String b = button;
-                if (b.equals("1")) {
-                    List<Film> films = filmRepo.findByTitle(filter);
+
+                if (b.equals("0")) {
+                    films = filmRepo.findAll();
+                    model.put("films", films);
+                }
+                else if (b.equals("1")) {
+                    films = filmRepo.findByTitle(filter);
                     model.put("films", films);
                 }
                 else if (b.equals("2")) {
-                    List<Film> films = filmRepo.findByYear(filter);
+                    films = filmRepo.findByYear(filter);
                     model.put("films", films);
                 }
 

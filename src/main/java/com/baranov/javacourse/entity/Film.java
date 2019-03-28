@@ -19,16 +19,22 @@ public class Film {
 
     private String filmDescrip;
 
+    private String mainActor;
+
     public Film() {
 
     }
 
-    public Film(String title, String year, String filmDescrip) {
+    public Film(String title, String year, String filmDescrip,String mainActor) {
+        this.mainActor = mainActor;
         this.title = title;
         this.year = year;
         this.filmDescrip = filmDescrip;
     }
 
+    public String getMainActor() {
+        return mainActor;
+    }
     public Integer getId() {
         return id;
     }
@@ -44,11 +50,13 @@ public class Film {
     public String getYear() {
          return year;
     }
-
     public String getFilmDescrip() {
         return filmDescrip;
     }
 
+    public void setMainActor(String mainActor) {
+        this.mainActor = mainActor;
+    }
     public void setId(Integer id) {
         this.id = id;
     }
@@ -64,7 +72,6 @@ public class Film {
     public void setYear(String year) {
         this.year = year;
     }
-
     public void setFilmDescrip(String filmDescrip) {
         this.filmDescrip = filmDescrip;
     }
