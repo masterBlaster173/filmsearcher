@@ -1,8 +1,8 @@
 # filmsearcher
-Spring boot test project
+Spring boot test project.
 Created by Baranov Alexander Alexandrovich, 03.19.
 
-Данный проект реализован на "Spring boot" и работает СУБД PostgreSQL.
+Данный проект реализован на "Spring boot" и работает с СУБД PostgreSQL.
 
 Для разворачивания БД:
 1. Скачать СУБД по ссылке https://www.postgresql.org/download/windows/
