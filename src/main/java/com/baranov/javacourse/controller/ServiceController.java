@@ -26,6 +26,7 @@ public class ServiceController {
     }
     @GetMapping("/add-film") // editor page
     public String findFilms(Map<String, Object> model) {
+        //reading from database
         Iterable<Film> films = filmRepo.findAll();
         model.put("films", films);
         // to display a list of actors on "greeting" page
@@ -47,7 +48,9 @@ public class ServiceController {
         else if (filmDescrip.equals("")) {
             filmDescrip = "Описание отсутствует";
         }
+        //create new entity
         Film film = new Film(title, year, filmDescrip, mainActor);
+        //match search
         Film filmFromDb = filmRepo.findFilmByTitleAndYear(film.getTitle(), film.getYear());
         if(filmFromDb != null){
             model.put("error", "Такой фильм уже существует!");
@@ -65,19 +68,19 @@ public class ServiceController {
     @RequestMapping("/find-film")
     public String filmFilter(@RequestParam(required = false) String filter , @RequestParam(value="button", defaultValue = "0") String button,  Map<String, Object> model) {
         Iterable<Film> films;
-        String b = button;
-
-        if (b.equals("0")) {
-            films = filmRepo.findAll();
-            model.put("films", films);
-        }
-        else if (b.equals("1")) {
-            films = filmRepo.findByTitle(filter);
-            model.put("films", films);
-        }
-        else if (b.equals("2")) {
-            films = filmRepo.findByYear(filter);
-            model.put("films", films);
+        switch (button) {
+            case "0":
+                films = filmRepo.findAll();
+                model.put("films", films);
+                break;
+            case "1":
+                films = filmRepo.findByTitle(filter);
+                model.put("films", films);
+                break;
+            case "2":
+                films = filmRepo.findByYear(filter);
+                model.put("films", films);
+                break;
         }
         return "filmfinder";
     }
@@ -86,7 +89,8 @@ public class ServiceController {
      * Adding actors in the database
      */
     @GetMapping("/add-actor")
-    public String findActors(Map<String, Object> model) {     //
+    public String findActors(Map<String, Object> model) {
+        //reading from database
         Iterable<Actor> actors = actorRepo.findAll();
         model.put("actors", actors);
         return "actoradder";
@@ -96,7 +100,7 @@ public class ServiceController {
     public String addActor(@RequestParam String firstame, @RequestParam String lastname, @RequestParam String age,@RequestParam String bio, Map<String, Object> model){
         Actor actor = new Actor(firstame, lastname, age, bio);
         actorRepo.save(actor);
-        //чтение из БД
+        //reading from database
         Iterable<Actor> actors = actorRepo.findAll();
         model.put("actors", actors);
         return "actoradder";
