@@ -39,7 +39,8 @@ public class ServiceController {
      * Adding movies to the database
      */
     @PostMapping("/add-film") // editor page
-    public String addFilm(@RequestParam String title, @RequestParam(defaultValue = "") String year,
+    public String addFilm(@RequestParam String title,
+                          @RequestParam(defaultValue = "") String year,
                           @RequestParam(defaultValue = "отписание отсутствует") String filmDescrip,
                           @RequestParam(defaultValue = "пусто") String mainActor, Map<String, Object> model){
 
@@ -64,7 +65,8 @@ public class ServiceController {
      * Search movies in the database
      */
     @RequestMapping("/find-film")
-    public String filmFilter(@RequestParam(required = false) String filter , @RequestParam(value="button", defaultValue = "0") String button,  Map<String, Object> model) {
+    public String filmFilter(@RequestParam(required = false) String filter ,
+                             @RequestParam(value="button", defaultValue = "0") String button,  Map<String, Object> model) {
         Iterable<Film> films;
         switch (button) {
             case "0":
@@ -95,8 +97,10 @@ public class ServiceController {
     }
 
     @PostMapping("/add-actor")
-    public String addActor(@RequestParam String firstame, @RequestParam String lastname,
-                           @RequestParam String age,@RequestParam String bio, Map<String, Object> model){
+    public String addActor(@RequestParam String firstame,
+                           @RequestParam String lastname,
+                           @RequestParam String age,
+                           @RequestParam String bio, Map<String, Object> model){
         Actor actor = new Actor(firstame, lastname, age, bio);
         actorRepo.save(actor);
         //reading from database
