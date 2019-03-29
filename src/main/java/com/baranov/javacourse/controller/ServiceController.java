@@ -39,22 +39,20 @@ public class ServiceController {
      * Adding movies to the database
      */
     @PostMapping("/add-film") // editor page
-    public String addFilm(@RequestParam String title, @RequestParam String year, @RequestParam String filmDescrip, @RequestParam(defaultValue = "пусто") String mainActor, Map<String, Object> model){
-        // in case of non-completion of the form, issued "год неизвестен"
-        if (year.equals("")) {
-            year = "неизвестен";
-        }
-        // in case of non-completion of the form, issued "Описание отсутствует"
-        else if (filmDescrip.equals("")) {
-            filmDescrip = "Описание отсутствует";
-        }
+    public String addFilm(@RequestParam String title, @RequestParam(defaultValue = "") String year,
+                          @RequestParam(defaultValue = "отписание отсутствует") String filmDescrip,
+                          @RequestParam(defaultValue = "пусто") String mainActor, Map<String, Object> model){
+
         //create new entity
         Film film = new Film(title, year, filmDescrip, mainActor);
         //match search
         Film filmFromDb = filmRepo.findFilmByTitleAndYear(film.getTitle(), film.getYear());
-        if(filmFromDb != null){
+        if(filmFromDb != null ){
             model.put("error", "Такой фильм уже существует!");
-        } else {
+        }
+        else if(film.getTitle().equals("")){
+            model.put("error", "Не задано название!");
+        }else {
             filmRepo.save(film);
             Iterable<Film> films = filmRepo.findAll();
             model.put("films", films);
@@ -97,7 +95,8 @@ public class ServiceController {
     }
 
     @PostMapping("/add-actor")
-    public String addActor(@RequestParam String firstame, @RequestParam String lastname, @RequestParam String age,@RequestParam String bio, Map<String, Object> model){
+    public String addActor(@RequestParam String firstame, @RequestParam String lastname,
+                           @RequestParam String age,@RequestParam String bio, Map<String, Object> model){
         Actor actor = new Actor(firstame, lastname, age, bio);
         actorRepo.save(actor);
         //reading from database
