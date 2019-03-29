@@ -10,6 +10,8 @@ public interface FilmRepo extends CrudRepository<Film, Long> {
 
     List<Film> findByTitle(String title);
 
+    Film findFilmByTitleAndYear(String title, String year);
+
     List<Film> findByYear(String year);
 
 }

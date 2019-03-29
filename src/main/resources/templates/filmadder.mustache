@@ -18,6 +18,11 @@
 <div>
     <form method="post">
         <input type="text" name="title" placeholder="Название фильма"/>
+
+        {{#error}}
+            <h3><a><b><i> {{error}}</i></b></a></h3>
+        {{/error}}
+
         <input type="text" name="year" placeholder="Год выхода"/>
         <!--<p><input type="text" name="filmDescrip"  placeholder="Описание" /></p>-->
         
@@ -34,9 +39,10 @@
             </table>
 
         <button type="submit">Опубликовать</button>
+
         <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
     </form>
-    <p><a href="/add-film" > Обновить список актёров </a></p>
+    <p><a href="/add-film" > Обновить страницу и списки </a></p>
 </div>
 <hr>
 <div> <b>Список фильмов </b></div>
