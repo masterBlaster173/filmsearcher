@@ -14,9 +14,6 @@ Created by Baranov Alexander Alexandrovich, 03.19.
 В случае некорректного отображения (не распознавания) "mustache", установить
 плагин для Idea "Handlebars/Mustache" в разделе "Plugins". 
 
-Для авторизации в приложении:
-            username("user")
-            password("password")
 
 Good Luck!
 

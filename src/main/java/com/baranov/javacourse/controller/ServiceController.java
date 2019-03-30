@@ -109,6 +109,32 @@ public class ServiceController {
         return "actoradder";
 
     }
+
+    /*
+     * Delete movies from the database
+     */
+    @GetMapping("/del-film") // editor page
+    public String findFilms2(Map<String, Object> model) {
+        //reading from database
+        Iterable<Film> films = filmRepo.findAll();
+        model.put("films", films);
+
+        return "filmdeleter";
+    }
+
+    @PostMapping("/del-film") // editor page
+    public String delFilm(Film film, Map<String, Object> model){
+        Film filmFromDb = filmRepo.findFilmById(film.getId());
+        if(filmFromDb != null ) {
+            filmRepo.delete(film);
+        }
+        else {
+            model.put("error", "Нет вильма с таким id");
+        }
+        Iterable<Film> films = filmRepo.findAll();
+        model.put("films", films);
+        return "filmdeleter";
+    }
 }
 
 

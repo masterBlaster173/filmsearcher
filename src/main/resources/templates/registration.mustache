@@ -5,10 +5,13 @@
     <title>Страница регистрации </title>
 </head>
 <body>
-Добавить нового пользователя:
+<b>Зарегистрируйтесь:</b>
 <form action="/registration" method="post">
-    <div><label> User Name : <input type="text" name="username"/> </label></div>
-    <div><label> Password: <input type="password" name="password"/> </label></div>
+    <div><label> Придумайте логин:&nbsp;&nbsp; <input type="text" name="username"/> </label></div>
+    <div><label> Придумайте пароль: <input type="password" name="password"/> </label></div>
+    <div><label> Имя : &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;<input type="text" name="firstname"/> </label></div>
+    <div><label> Фамилия :&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;<input type="text" name="lastname"/> </label></div>
+    <div><label> e-mail :&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp; <input type="text" name="email"/> </label></div>
     <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
     <div><input type="submit" value="Зарегистрироваться"/></div>
 </form>

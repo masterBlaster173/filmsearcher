@@ -1,6 +1,6 @@
-<!-- Template for the users to search for movies -->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" >
+<!-- Template for the editors to view and add actors to the list -->
+<html>
+
 <body>
 <style>
     body { background-color: lightblue; }
@@ -13,17 +13,20 @@
         border: 1px solid black;
     }
 </style>
-<div><b> Поиск фильма </b></div>
-<form method="get">
-    <input type="text" name="filter" placeholder="Введите значение" />
-    <label><input type="radio" name="button" value="1"> по названию</label>
-    <label><input type="radio" name="button" value="2"> по году</label>
-    <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
-    <button type="submit">Поиск</button>
-</form>
+<div><b> Удаление фильма по ID </b></div>
+<div>
+    <form method="post" action="/del-film">
+        <input type="text" name="id" placeholder="Введите id"/>
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+        <button type="submit">Удалить</button>
+    </form>
+    {{#error}}
+        {{error}}
+    {{/error}}
+</div>
 
-<div> Найденные фильмы </div>
-
+<hr>
+<div><b> Список фильмов:</b> </div>
 {{#films}}
 <table class="table ">
     <thead>
@@ -47,6 +50,12 @@
 <p><i>{{filmDescrip}}</i></p>
 <hr>
 {{/films}}
+
+<form action="/logout" method="post">
+    <input type="submit" value="Sign Out"/>
+    <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+</form>
+
 <p><a href="/" > На главную </a></p>
 </body>
 </html>
